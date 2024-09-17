@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Switch</title>
     <h4>Ejercicio Switch</h4>
 </head>
 <body>
@@ -11,33 +11,18 @@
 </body>
 </html>
 <script>
-    let dia= prompt("Escribe el día de la semana que quieras")
-
+    let dia= prompt("Escribe el día de la semana que quieras").toLowerCase();
+      
         switch (dia) {
             case "lunes":
-                console.log("Es laborable")
-                break;
-        
             case "martes":
-                console.log("Es laborable")
-                break;
-        
             case "miercoles":
-                console.log("Es laborable")
-                break;
-        
-            case "jueves":
-                console.log("Es laborable")
-                break;
-
+            case "jueves":  
             case "viernes":
                 console.log("Es laborable")
                 break;
 
-            case "sabado":
-                console.log("Es timepo de ocio")
-                break;
-                
+            case "sabado":   
             case "domingo":
                 console.log("Es tiempo de ocio")
                 break;    
