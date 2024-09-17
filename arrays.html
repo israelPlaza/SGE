@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+</html>
+<script>
+    const numeros =[2, 324, 90, 21, 4565, 454, 667, 34]
+    const resultado=[]
+    let numero= prompt("Escribe un el número que quieras")
+
+numeros.forEach(element => {
+       if (numero<element) {
+        document.writeln(element + "<br>")
+       } 
+    });
+
+numeros.forEach(element => {
+resultado.push(document.writeln("multiplicación "+ element*numero + "<br>"))  
+});
+
+const mayores = numeros.filter(numeroMayor)
+
+function numeroMayor(num) {
+    return num >numero
+}
+mayores.forEach(element => {
+    document.writeln(element+ "<br>" + "filter")
+});
+</script>
