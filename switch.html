@@ -29,5 +29,21 @@
             default:
                 console.log("Has fallado al escribir")
                 break;
+
         }
+    const laborable=["lunes", "martes", "miercoles", "jueves", "viernes"]
+    const festivo=["sabado", "domingo"]    
+
+        
+        if(laborable.includes(dia)){
+            console.log("Es laborable")
+        }
+        else if(festivo.includes(dia)){
+            console.log("Es tiempo de ocio")
+        }
+        else {
+            console.log("Has fallado al escribir")
+        }
+        
+
 </script>
