@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Coches</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let coches = [
+        {
+            "Marca": "Opel",
+            "Modelo": "Astra",
+            "Matricula": "45789KLM",
+            "Dueños_anteriores": ["Amparo Baró", "Ricardo Castella"],
+            "Colores": ["Rojo", "Verde", "Amarillo"],
+            "Precio": [200, 100, 333]
+        },
+        {
+            "Marca": "Ford",
+            "Modelo": "Scort",
+            "Matricula": "4534KLM",
+            "Dueños_anteriores": ["La Pasionaria", "Vladimir Ulianov"],
+            "Colores": ["Rojo", "Amarillo", "Azul"],
+            "Precio": [200, 100, 333]
+        }
+    ];
+
+    function mostrarCochesConsola() {
+        coches.forEach(coche => {
+            console.log(`Coche: ${coche.Marca} ${coche.Modelo}`);
+            console.log(`Matrícula: ${coche.Matricula}`);
+            console.log(`Dueños Anteriores: ${coche.Dueños_anteriores.join(", ")}`);
+            console.log("Colores y precios:");
+
+            coche.Colores.forEach((color, index) => {
+                console.log(`  - ${color}: ${coche.Precio[index]}€`);
+            });
+        });
+    }
+
+    mostrarCochesConsola();
+</script>
