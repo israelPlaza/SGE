@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicando Json</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const datos = [
+  {
+    nombre: "Eduardo",
+    edad: 23,
+    curso: "DAM2V",
+    notas: [{ PSP: 9 }, { PMDM: 8 }, { AD: 9 }]
+  },
+  {
+    nombre: "Alberto",
+    edad: 27,
+    curso: "DAM2V",
+    notas: [{ PSP: 6 }, { PMDM: 5 }, { AD: 6 }]
+  },
+  {
+    nombre: "Carlos",
+    edad: 35,
+    curso: "DAW2V",
+    notas: [{ DIW: 6 }, { DAEC: 5 }, { PD: 3 }]
+  }
+];
+
+// Edad media alumnos
+const totalEdad= datos.reduce((suma,alumno)=>suma + alumno.edad,0);
+const media= totalEdad/datos.length;
+console.log("La edad del total de los alumnos es: ",media,"\n")
+</script>
