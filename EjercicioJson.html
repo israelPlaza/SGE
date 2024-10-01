@@ -34,5 +34,30 @@
 // Edad media alumnos
 const totalEdad= datos.reduce((suma,alumno)=>suma + alumno.edad,0);
 const media= totalEdad/datos.length;
+
 console.log("La edad del total de los alumnos es: ",media,"\n")
+
+// Calcular la media de notas de cada alumno
+const mediasNotasAlumnos = {};
+datos.forEach(alumno => {
+  const notas = alumno.notas.map(nota => Object.values(nota)[0]);
+  const mediaNotas = notas.reduce((sum, nota) => sum + nota, 0) / notas.length;
+  mediasNotasAlumnos[alumno.nombre] = mediaNotas;
+});
+
+console.log("Media de notas de cada alumno:", mediasNotasAlumnos);
+
+// Calcular la edad de los alumnos de DAM2V
+const edadesDAM2V = datos.filter(alumno => alumno.curso === "DAM2V").map(alumno => alumno.edad);
+
+console.log("Edades de los alumnos de DAM2V:", edadesDAM2V);
+
+// Calcular la media de notas de la asignatura PSP
+const notasPSP = datos
+  .filter(alumno => alumno.notas.some(nota => "PSP" in nota))
+  .map(alumno => alumno.notas.find(nota => "PSP" in nota).PSP);
+const mediaPSP = notasPSP.reduce((sum, nota) => sum + nota, 0) / notasPSP.length;
+
+console.log("Media de notas de PSP:", mediaPSP);
+
 </script>
