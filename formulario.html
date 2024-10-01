@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return validarFormulario()"> 
+    Nombre  <br><input type="text" id="nombre" name="nombre"><br>
+    Apellido 1 <br><input type="text" id="Apellido" name="Apellido"><br>
+    Apellido 2 <br><input type="text" id="Apellido2" name="Apellido2"><br>
+    Direccion <br><input type="text" id="Direccion" name="Direccion"><br>
+    Telefono <br><input type="text" id="Telefono" name="Telefono"><br>
+    Email <br><input type="text" id="Email" name="Email"><br>
+    <input type="submit" value="Validar">
+    </form>
+</body>
+</html>
+<script>
+     function validarFormulario() {
+            const campos = ['nombre', 'Apellido', 'Apellido2', 'Direccion', 'Telefono', 'Email'];
+            let camposFaltantes = [];
+
+            // Recorrer los campos y agregar los que están vacíos
+            for (let i = 0; i < campos.length; i++) {
+                const campo = document.getElementById(campos[i]);
+
+                // Si el campo está vacío, añadirlo a la lista
+                if (campo.value === "") {
+                    camposFaltantes.push(campo.name);  // Guardar el nombre del campo
+                }
+            }
+
+            // Si hay campos vacíos, mostrar un mensaje con todos ellos
+            if (camposFaltantes.length > 0) {
+                alert("Por favor, completa los siguientes campos: " + camposFaltantes.join(", "));
+                return false;  // Evitar el envío del formulario
+            }
+
+            // Si todos los campos están completos
+            alert("Formulario completado correctamente.");
+            return true;  // Permitir el envío
+        }
+            
+</script>
