@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <form onsubmit="return validarFormulario()"> 
+    <form id="formulario"> 
         Nombre  <br><input type="text" id="nombre" name="Nombre"><br>
         Apellido 1 <br><input type="text" id="Apellido" name="Apellido 1"><br>
         Apellido 2 <br><input type="text" id="Apellido2" name="Apellido 2"><br>
@@ -20,10 +20,30 @@
         Teléfono <br><input type="text" id="Telefono" name="Teléfono"><br>
         Email <br><input type="text" id="Email" name="Email"><br><br>
         <input type="submit" value="Validar">
-        
+        <input type="button" id="btnAnadir" value="Añadir"> <!-- Cambiado de type="anadir" a button -->
     </form>
-    <ul id="gente"></ul>  
+
+    <label for="opciones">Opciones:</label>
+    <select name="opciones" id="membership">
+        <option value="arriba">Arriba</option>
+        <option value="abajo">Abajo</option>
+    </select>
+
+    <ul id="gente"></ul> 
+
     <script>
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe y la página se recargue
+            
+            validarFormulario();
+        });
+
+        document.getElementById('btnAnadir').addEventListener('click', function() {
+            if (validarFormulario()) { // Solo añade si la validación pasa
+                anadirPersona();
+            }
+        });
+
         function validarFormulario() {
             // Obtener todos los campos a validar
             const campos = document.querySelectorAll('input[type="text"]');
@@ -67,15 +87,23 @@
             }
 
             // Si todo está correcto
-            alert("Formulario completado correctamente.");
-            return true; // Permitir el envío
+            return true; // Permitir el proceso de añadir
         }
 
-        const lista =document.getElementById("gente");
-        const nuevaPersona = document.createElement("li");
-        nuevaPersona.innerText=document.getElementById("nombre").value +" "+ getElementById("Apellido").value;
+        function anadirPersona() {
+            const lista = document.getElementById("gente");
+            const nuevaPersona = document.createElement("li");
+            nuevaPersona.innerText = document.getElementById("nombre").value + " " + document.getElementById("Apellido").value;
 
+            const opcionSeleccionada = document.getElementById("membership").value;
 
+            // Añadir la persona arriba o abajo según la selección
+            if (opcionSeleccionada === "arriba") {
+                lista.insertBefore(nuevaPersona, lista.firstChild); // Añadir arriba
+            } else {
+                lista.appendChild(nuevaPersona); // Añadir abajo
+            }
+        }
     </script>
 </body>
 </html>
