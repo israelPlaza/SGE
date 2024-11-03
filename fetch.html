@@ -1,0 +1,87 @@
+<title>Mi Pokédex</title>
+
+</head>
+<body>
+    <h1>¡Bienvenido a mi Pokédex!</h1>
+    <input type="number" id="pokemon-id" placeholder="ID del Pokémon">
+    <img id="pokemon-image" src="" alt="Imagen del Pokémon" style="display: none;"><br>
+
+    <label for="nombre">Nombre:</label>
+    <span id="nombre"></span><br>
+
+    <label for="altura">Altura:</label>
+    <span id="altura"></span><br>
+
+    <label for="peso">Peso:</label>
+    <span id="peso"></span><br>
+
+    <label for="categoria">Categoría:</label>
+    <span id="categoria"></span><br>
+
+    <label for="habilidades">Habilidades:</label>
+    <span id="habilidades"></span><br>
+
+    <label for="tipo">Tipo:</label>
+    <span id="tipo"></span><br>
+
+    <h2>Puntos Base</h2>
+    <label for="ps">PS:</label>
+    <span id="ps"></span><br>
+
+    <label for="ataque">Ataque:</label>
+    <span id="ataque"></span><br>
+
+    <label for="defensa">Defensa:</label>
+    <span id="defensa"></span><br>
+
+    <label for="ataque-especial">Ataque Especial:</label>
+    <span id="ataque-especial"></span><br>
+
+    <label for="defensa-especial">Defensa Especial:</label>
+    <span id="defensa-especial"></span><br>
+
+    <label for="velocidad">Velocidad:</label>
+    <span id="velocidad"></span><br>
+
+    <script>
+        document.getElementById('pokemon-id').addEventListener('input', function() {
+            const pokemonId = document.getElementById('pokemon-id').value;
+
+            if (pokemonId) {
+                // Obtener la información del Pokémon
+                fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+                .then(response => response.json())
+                .then(data => {
+                    
+                    document.getElementById('nombre').textContent = data.name;
+                    document.getElementById('altura').textContent = data.height;
+                    document.getElementById('peso').textContent = data.weight;
+                    document.getElementById('categoria').textContent = data.types[0].type.name;
+                    
+                    document.getElementById('habilidades').textContent = data.abilities[0].ability.name;
+                    
+                   
+                    document.getElementById('tipo').textContent = data.types[0].type.name;
+                    
+                    // Mostrar puntos base
+                    document.getElementById('ps').textContent = data.stats[0].base_stat;
+                    document.getElementById('ataque').textContent = data.stats[1].base_stat;
+                    document.getElementById('defensa').textContent = data.stats[2].base_stat;
+                    document.getElementById('ataque-especial').textContent = data.stats[3].base_stat;
+                    document.getElementById('defensa-especial').textContent = data.stats[4].base_stat;
+                    document.getElementById('velocidad').textContent = data.stats[5].base_stat;
+
+                    // Mostrar la imagen
+                    const imageElement = document.getElementById('pokemon-image');
+                    imageElement.src = data.sprites.front_default;
+                    imageElement.alt = data.name;
+                    imageElement.style.display = 'block';
+
+                    
+                })
+                .catch(error => console.error('Error al obtener datos:', error));
+            }
+        });
+    </script>
+</body>
+</html>
