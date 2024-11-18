@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 2</title>
+</head>
+<body>
+    <input type="text" name="texto">
+    <input type="button" value="abajo" >
+    <input type="button" value="arriba" id="arriba">
+    <ul id="lista"></ul>
+</body>
+
+<script>
+    document.querySelector('input[value="abajo"]').addEventListener('click', ()=>{
+        const obtner=document.querySelector('input[name="texto"]').value
+        const lis= document.createElement('li')
+        lis.textContent=obtner
+        document.getElementById('lista').appendChild(lis)
+    });
+
+    document.getElementById('arriba').addEventListener('click',() =>{
+        const obtener2=document.querySelector('input[name="texto"]').value
+        const lis2=document.createElement('li')
+        lis2.textContent=obtener2
+        const lista = document.getElementById('lista')
+        lista.insertBefore(lis2, lista.firstChild)
+    })
+</script>
+</html>
+

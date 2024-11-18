@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PruebaExamen1</title>
+
+</head>
+<body>
+
+    <input type="text" name="nombre" id="texto">
+    <input type="button" id="arriba" value="arriba"">
+    <input type="button" id="abajo" value="abajo">
+    <ul id="lista"></ul>
+    <input type="button" value="Enviar">
+
+</html>
+
+<script>
+    document.getElementById("arriba").addEventListener('click', () =>{
+        const coger=document.querySelector('input[name="nombre"]').value;
+        const li = document.createElement('li')
+        li.textContent=coger
+        const lista= document.getElementById('lista')
+        lista.insertBefore(li,lista.firstChild)
+    });
+
+    document.getElementById("abajo").addEventListener('click',() =>{
+        const coger2=document.querySelector('input[name="nombre"]').value
+        const li2= document.createElement('li')
+        li2.textContent=coger2
+        document.getElementById('lista').appendChild(li2)
+    })
+
+    document.querySelector('input[value="Enviar"]').addEventListener('click', ()=>{
+        const nombre=document.querySelector('input[name="nombre"]').value
+        if(!nombre){
+            alert("No puede estar vacío")
+        }
+        if (nombre.length<10) {
+            alert("tiene que ser mayor de 10")
+        }
+    })
+
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="texto" id="texto"><br>
+    <input type="button" value="Aceptar" id="aceptar"><br>
+    <input type="text" name="pokemon" id="pokemon"><br>
+    <label for="tipo">Tipo:</label>
+    <span id="tipo"></span><br>
+    <input type="button" value="validar" id="validar"><br>
+    <ul id="lista"></ul>
+
+    
+</body>
+</html>
+
+<script>
+    document.getElementById('aceptar').addEventListener('click' , () =>{
+        const input = document.querySelector('input[name="texto"]').value
+        if (input.length>3) {
+            
+        
+        const lis= document.createElement('li')
+        lis.textContent=input
+        document.getElementById('lista').appendChild(lis)
+        } else{
+            alert("Tierne qu tner mas de tres")
+        }
+    })
+
+    document.getElementById('validar').addEventListener('click' , () =>{
+        const poke = document.getElementById('pokemon').value
+        if (poke) {
+            fetch(`https://pokeapi.co/api/v2/pokemon/${poke.toLowerCase()}`)
+            .then(response => response.json())
+            .then(data =>{
+                document.getElementById('tipo').textContent=data.types[0].type.name
+            })
+        }
+    })
+
+</script>

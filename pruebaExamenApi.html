@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Pokémon</title>
+</head>
+<body>
+    <h1>Busca un Pokémon</h1>
+    <input type="text" id="pokemon" placeholder="Escribe el nombre del Pokémon">
+    <p><label for="habilidades">Habilidades:</label></p>
+    <span id="habilidades"></span><br>
+    Tipo: <span id="tipo"></span>
+    <p><input type="button" id="Validar" value="Validar"></p>
+
+    <script>
+        document.getElementById('Validar').addEventListener('click', () =>{
+            const nombre = document.getElementById('pokemon').value;
+
+            if (nombre) {
+                fetch(`https://pokeapi.co/api/v2/pokemon/${nombre.toLowerCase()}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('tipo').textContent =data.types[0].type.name
+                    document.getElementById('habilidades').textContent = data.abilities[0].ability.name;
+                })
+            }
+        })
+    </script>
+</body>
+</html>
