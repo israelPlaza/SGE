@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practicando Json</h1>
+</body>
+</html>
+<script>
+  const datos = [
+  {
+    nombreCompleto: "Juan Pérez",
+    edad: 20,
+    telefono: "123456789",
+    asignaturas: {
+      primero: [
+        { nombre: "Matemáticas", nota: 8 },
+        { nombre: "Historia", nota: 7 }
+      ],
+      segundo: [
+        { nombre: "Física", nota: 9 },
+        { nombre: "Literatura", nota: 6 }
+      ]
+    },
+    vivienda: {
+      localidad: "Madrid",
+      calle: "Gran Vía 12",
+      población: "Madrid",
+      codigoPostal: "28013"
+    },
+    tieneCoche: true
+  },
+  {
+    nombreCompleto: "Ana López",
+    edad: 22,
+    telefono: "987654321",
+    asignaturas: {
+      primero: [
+        { nombre: "Biología", nota: 10 },
+        { nombre: "Geografía", nota: 8 }
+      ],
+      segundo: [
+        { nombre: "Química", nota: 9 },
+        { nombre: "Arte", nota: 7 }
+      ]
+    },
+    vivienda: {
+      localidad: "Barcelona",
+      calle: "Carrer de Balmes 34",
+      población: "Barcelona",
+      codigoPostal: "08007"
+    },
+    tieneCoche: false
+  }
+];
+
+console.log(datos[0].nombreCompleto); // "Juan Pérez"
+console.log(datos[0].asignaturas.primero); // [{ nombre: "Matemáticas", nota: 8 }, ...]
+
+const datosJSON = JSON.stringify(datos, null, 2); // Formateado con espacios
+console.log(datosJSON);
+
+</script>

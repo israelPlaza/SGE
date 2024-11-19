@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+<title>Ejercicio 1</title>
+</head>
+<body>
+<input type="text" name="texto" >
+<input type="button" value="Arriba">
+<input type="button" value="Debajo" id="debajo">
+<ul id="lista"></ul>
+<br>
+<br>
+<input type="text" value="Nombre">
+<input type="text" value="Apellido">
+<input type="checkbox" value="Azul">Azul</input>
+<input type="checkbox" value="Rojo">Rojo</input>
+<input type="checkbox" value="Verde">Verde</input>
+<input type="button" value="Enviar">
+</body>
+</html>
+<script>
+    document.getElementById('debajo').addEventListener('click', ()=>{
+    const dato= document.querySelector('input[name="texto"]').value
+    const li=document.createElement('li')
+    li.textContent=dato
+    document.getElementById('lista').appendChild(li)
+    })
+
+    document.querySelector('input[value="Arriba"]').addEventListener('click',()=>{
+        const datoA = document.querySelector('input[name="texto"]').value
+        const li2= document.createElement('li')
+        li2.textContent=datoA
+        const lista = document.getElementById('lista')
+        lista.insertBefore(li2, lista.firstChild)
+    })
+
+    document.querySelector('input[value="Enviar"]').addEventListener('click', () =>{
+        const nombre = document.querySelector('input[value="Nombre"]').value.trim(); // Obtener y limpiar el nombre.
+         const apellido = document.querySelector('input[value="Apellido"]').value.trim(); // Obtener y limpiar el apellido.
+        const colores = document.querySelectorAll('input[type="checkbox"]:checked'); // Contar los colores seleccionados.
+
+        if (!nombre || !apellido) { // Verificar que los campos no estén vacíos.
+        alert("Todos los campos deben tener datos.");
+        return; // Detener la validación.
+    }
+        if (nombre.length < 5 || nombre.length > 40) { // Validar la longitud del nombre.
+        alert("El nombre debe tener entre 5 y 40 caracteres.");
+        return;
+    }
+        if (colores.length === 0) { // Verificar si no se seleccionó ningún color.
+        alert("Debe seleccionar al menos un color.");
+        return;
+    }
+        alert("Formulario válido."); // Si todo está correcto.
+    })
+
+
+</script>

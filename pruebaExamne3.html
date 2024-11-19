@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prueba todo</title>
+</head>
+<body>
+    <input type="text" id="texto">
+    <input type="button" value="Validar" id="validar"><br>
+    <input type="text" name="pokemon" id="pokemon">
+    <input type="button" value="Selecciona" id="selecciona"><br>
+    <level for="habilidades">Habilidades</level>
+    <span id="habilidades"></span><br>
+    tipo: <span id="tipo"></span><br>
+    <ul id="lista"></ul>
+</body>
+</html>
+<script>
+    document.getElementById('validar').addEventListener('click', () =>{
+        const name= document.getElementById('texto').value
+        if (name.length>3) {
+            const li= document.createElement('li')
+            li.textContent=name
+            document.getElementById('lista').appendChild(li)
+        }else{
+            alert("Tiene que ser mayor de tres")
+        }
+    })
+
+    document.getElementById('selecciona').addEventListener('click', () =>{
+        const pokea = document.getElementById('pokemon').value;
+        if (pokea) {
+            fetch(`https://pokeapi.co/api/v2/pokemon/${pokea.toLowerCase()}`)
+            .then(response => response.json())
+            .then(data =>{
+                document.getElementById('tipo').textContent =data.types[0].type.name
+                document.getElementById('habilidades').textContent = data.abilities[0].ability.name;
+            })
+        }
+    })
+
+</script>
